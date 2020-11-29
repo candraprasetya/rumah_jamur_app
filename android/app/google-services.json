@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "899855801890",
+    "firebase_url": "https://rumah-jamur.firebaseio.com",
+    "project_id": "rumah-jamur",
+    "storage_bucket": "rumah-jamur.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899855801890:android:9a58cb2be387267d11f47b",
+        "android_client_info": {
+          "package_name": "com.tep.rumah_jamur"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899855801890-oo924l51ravvf0u8u05og431qhrrru5m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8jZ0yhjjeYZ0k8ta0Ip9MjkDuMr8qWx8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899855801890-oo924l51ravvf0u8u05og431qhrrru5m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
