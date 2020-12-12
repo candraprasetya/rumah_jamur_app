@@ -7,11 +7,20 @@ class TextFieldKu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
+    return VxBox(
+            child: TextField(
       decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          hintText: keterangan ?? 'input your email'),
-    );
+          border: InputBorder.none,
+          hintText: keterangan ?? "Keterangan",
+          hintStyle: TextStyle(color: Color(0xFFA0A3BD))),
+    ))
+        .padding(EdgeInsets.symmetric(
+          horizontal: 24,
+          vertical: 12,
+        ))
+        .width(context.screenWidth)
+        .hexColor('#EFF0F6')
+        .rounded
+        .make();
   }
 }

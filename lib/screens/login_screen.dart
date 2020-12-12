@@ -12,25 +12,33 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: VStack([
+      body: VxBox(
+        child: formLogin(),
+      ).p16.size(context.screenWidth, context.screenHeight).make(),
+    );
+  }
+
+  Widget formLogin() {
+    return VStack(
+      [
         TextFieldKu(
           controller: emailController,
           keterangan: 'inputkan email',
         ),
+        10.heightBox,
         TextFieldKu(
           controller: passController,
           keterangan: 'inputkan password',
         ),
-        RaisedButton(
-          child: 'Masuk'.text.white.makeCentered(),
-          onPressed: () async {
-            //FIXME memanggil fungsi register dari AuthService
-            FirebaseAuth auth = FirebaseAuth.instance;
-            await auth.signInWithEmailAndPassword(
-                email: emailController.text, password: passController.text);
+        20.heightBox,
+        MyButton(
+          text: 'Masuk',
+          onPress: () {
+            VxToast.show(context, msg: 'Butotn di click');
           },
-        )
-      ]),
+        ),
+      ],
+      alignment: MainAxisAlignment.center,
     );
   }
 }
