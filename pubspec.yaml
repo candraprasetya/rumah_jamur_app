@@ -33,6 +33,7 @@ dependencies:
   get: ^3.17.1
   provider: ^4.3.2+2
   velocity_x: ^1.0.1
+  flutter_login: ^1.0.14
 dev_dependencies:
   flutter_test:
     sdk: flutter
