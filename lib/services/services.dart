@@ -5,3 +5,4 @@ import 'package:rumah_jamur/utils/utils.dart';
 
 part 'auth_service.dart';
 part 'user_service.dart';
+part 'presensi_service.dart';

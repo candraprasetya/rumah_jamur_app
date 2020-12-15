@@ -10,6 +10,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController passController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController nimController = TextEditingController();
+
   Widget _backButton() {
     return InkWell(
       onTap: () {
@@ -100,7 +101,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Text(
               'Masuk',
               style: TextStyle(
-                  color: Color(0xfff79c4f),
+                  color: Warna.primary,
                   fontSize: 13,
                   fontWeight: FontWeight.w600),
             ),

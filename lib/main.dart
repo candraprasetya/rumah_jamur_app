@@ -30,6 +30,9 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             initialRoute: '/welcome',
             getPages: [
+              GetPage(name: '/success', page: () => SuccessScreen()),
+              GetPage(name: '/code', page: () => CodePresensi()),
+              GetPage(name: '/qr', page: () => QrPresensi()),
               GetPage(name: '/welcome', page: () => WelcomeScreen()),
               GetPage(name: '/login', page: () => LoginScreen()),
               GetPage(name: '/register', page: () => RegisterScreen()),
@@ -40,7 +43,9 @@ class MyApp extends StatelessWidget {
           );
         }
         //Loading
-        return CircularProgressIndicator();
+        return Container(
+          color: Colors.white,
+        );
       },
     );
   }
