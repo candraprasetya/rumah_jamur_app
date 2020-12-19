@@ -50,5 +50,6 @@ TextStyle boldText = TextStyle(
 TextStyle lightText = TextStyle(
   fontFamily: "Montserrat",
   color: Warna.darkBrown,
+  fontWeight: FontWeight.w200,
   fontSize: 14,
 );

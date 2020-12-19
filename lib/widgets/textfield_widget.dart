@@ -6,7 +6,10 @@ class TextFieldKu extends StatelessWidget {
   final TextInputType inputType;
   final bool isPassword;
   TextFieldKu(
-      {this.controller, this.keterangan, this.inputType, this.isPassword});
+      {this.controller,
+      this.keterangan = "Keterangan",
+      this.inputType,
+      this.isPassword});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class TextFieldKu extends StatelessWidget {
       obscureText: isPassword ?? false,
       decoration: InputDecoration(
           border: InputBorder.none,
-          hintText: keterangan ?? "Keterangan",
+          hintText: keterangan,
           hintStyle: primaryText.copyWith(
             fontSize: 12,
             color: Warna.rosyBrown,
@@ -28,11 +31,11 @@ class TextFieldKu extends StatelessWidget {
     ))
         .padding(EdgeInsets.symmetric(
           horizontal: 18,
-          vertical: 6,
+          vertical: 4,
         ))
         .width(context.screenWidth)
         .hexColor('#EFF0F6')
-        .rounded
+        .roundedSM
         .make();
   }
 }

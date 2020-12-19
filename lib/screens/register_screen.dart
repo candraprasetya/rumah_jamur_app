@@ -13,23 +13,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   Widget _backButton() {
     return InkWell(
-      onTap: () {
-        Navigator.pop(context);
-      },
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        child: Row(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(left: 0, top: 10, bottom: 10),
-              child: Icon(Icons.keyboard_arrow_left, color: Colors.black),
-            ),
-            Text('Back',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500))
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: HStack(
+          [
+            IconButton(
+                icon: Icon(Icons.arrow_back_ios_outlined),
+                color: Warna.darkBrown,
+                onPressed: () => Get.back()),
+            'Back'
+                .text
+                .color(Warna.darkBrown)
+                .textStyle(boldText.copyWith(fontSize: 12))
+                .make()
           ],
-        ),
-      ),
-    );
+          crossAlignment: CrossAxisAlignment.center,
+        ));
   }
 
   Widget _submitButton() {
@@ -115,54 +115,43 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-          text: 'Rum',
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.w700,
-            color: Color(0xffe46b10),
-          ),
+          text: 'Rumah',
+          style: boldText.copyWith(fontSize: 28, color: Warna.primary),
           children: [
             TextSpan(
-              text: 'ah',
-              style: TextStyle(color: Colors.black, fontSize: 30),
-            ),
-            TextSpan(
-              text: 'Jamur',
-              style: TextStyle(color: Color(0xffe46b10), fontSize: 30),
-            ),
+                text: 'Jamur',
+                style: lightText.copyWith(fontSize: 28, color: Warna.accent)),
           ]),
     );
   }
 
   Widget _emailPasswordWidget() {
-    return Column(
-      children: <Widget>[
-        TextFieldKu(
-          controller: nameController,
-          keterangan: 'inputkan nama',
-          inputType: TextInputType.name,
-        ),
-        10.heightBox,
-        TextFieldKu(
-          controller: nimController,
-          keterangan: 'inputkan nim',
-          inputType: TextInputType.text,
-        ),
-        10.heightBox,
-        TextFieldKu(
-          controller: emailController,
-          keterangan: 'inputkan email',
-          inputType: TextInputType.emailAddress,
-        ),
-        10.heightBox,
-        TextFieldKu(
-          controller: passController,
-          keterangan: 'inputkan password',
-          inputType: TextInputType.visiblePassword,
-          isPassword: true,
-        ),
-      ],
-    );
+    return VStack([
+      TextFieldKu(
+        controller: nameController,
+        keterangan: 'masukkan nama kamu',
+        inputType: TextInputType.name,
+      ),
+      10.heightBox,
+      TextFieldKu(
+        controller: nimController,
+        keterangan: 'masukkan nim kamu',
+        inputType: TextInputType.text,
+      ),
+      10.heightBox,
+      TextFieldKu(
+        controller: emailController,
+        keterangan: 'masukkan email kamu',
+        inputType: TextInputType.emailAddress,
+      ),
+      10.heightBox,
+      TextFieldKu(
+        controller: passController,
+        keterangan: 'masukkan password kamu',
+        inputType: TextInputType.visiblePassword,
+        isPassword: true,
+      ),
+    ]);
   }
 
   @override

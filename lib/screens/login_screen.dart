@@ -9,27 +9,6 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
 
-  Widget _backButton() {
-    return InkWell(
-      onTap: () {
-        Get.back();
-      },
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        child: Row(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(left: 0, top: 10, bottom: 10),
-              child: Icon(Icons.keyboard_arrow_left, color: Colors.black),
-            ),
-            Text('Back',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500))
-          ],
-        ),
-      ),
-    );
-  }
-
   Widget _submitButton() {
     return MyButton(
       color: Warna.primary,
@@ -68,29 +47,24 @@ class _LoginScreenState extends State<LoginScreen> {
         Get.offAndToNamed('/register');
       },
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 20),
-        padding: EdgeInsets.all(15),
-        alignment: Alignment.bottomCenter,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Don\'t have an account ?',
-              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            Text(
-              'Register',
-              style: TextStyle(
-                  color: Warna.primary,
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600),
-            ),
-          ],
-        ),
-      ),
+          margin: EdgeInsets.symmetric(vertical: 20),
+          padding: EdgeInsets.all(15),
+          alignment: Alignment.bottomCenter,
+          child: HStack(
+            [
+              'Don\'t have an account ?'
+                  .text
+                  .textStyle(primaryText.copyWith(fontSize: 14))
+                  .make(),
+              6.widthBox,
+              'Register'
+                  .text
+                  .textStyle(
+                      boldText.copyWith(fontSize: 14, color: Warna.primary))
+                  .make()
+            ],
+            alignment: MainAxisAlignment.center,
+          )),
     );
   }
 
@@ -98,84 +72,72 @@ class _LoginScreenState extends State<LoginScreen> {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-          text: 'Rum',
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.w700,
-            color: Warna.primary,
-          ),
+          text: 'Rumah',
+          style: boldText.copyWith(fontSize: 28, color: Warna.primary),
           children: [
             TextSpan(
-              text: 'ah',
-              style: TextStyle(color: Colors.black, fontSize: 30),
-            ),
-            TextSpan(
-              text: 'Jamur',
-              style: TextStyle(color: Warna.primary, fontSize: 30),
-            ),
+                text: 'Jamur',
+                style: lightText.copyWith(fontSize: 28, color: Warna.accent)),
           ]),
     );
   }
 
   Widget _emailPasswordWidget() {
-    return Column(
-      children: <Widget>[
-        TextFieldKu(
-          keterangan: "Enter your email",
-          controller: emailController,
-          inputType: TextInputType.emailAddress,
-        ),
-        10.heightBox,
-        TextFieldKu(
-          keterangan: "Enter your password",
-          controller: passController,
-          inputType: TextInputType.visiblePassword,
-          isPassword: true,
-        ),
-      ],
-    );
+    return VStack([
+      TextFieldKu(
+        keterangan: "Enter your email",
+        controller: emailController,
+        inputType: TextInputType.emailAddress,
+      ),
+      10.heightBox,
+      TextFieldKu(
+        keterangan: "Enter your password",
+        controller: passController,
+        inputType: TextInputType.visiblePassword,
+        isPassword: true,
+      ),
+    ]);
   }
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
     return Scaffold(
-        body: Container(
-      height: height,
-      child: Stack(
-        children: <Widget>[
+        body: VxBox(
+      child: ZStack(
+        [
           Positioned(
-              top: -height * .20,
-              right: -MediaQuery.of(context).size.width * .4,
+              top: -context.screenHeight * .20,
+              right: -context.screenWidth * .4,
               child: MyContainer()),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(height: height * .2),
-                  _title(),
-                  SizedBox(height: 50),
-                  _emailPasswordWidget(),
-                  SizedBox(height: 20),
-                  _submitButton(),
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    alignment: Alignment.centerRight,
-                    child: Text('Forgot Password ?',
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w500)),
-                  ),
-                  _createAccountLabel(),
-                ],
-              ),
-            ),
+          VxBox(
+            child: VStack(
+              [
+                (context.screenHeight * .2).heightBox,
+                _title(),
+                52.heightBox,
+                _emailPasswordWidget(),
+                24.heightBox,
+                _submitButton(),
+                'Forgot Password ?'
+                    .text
+                    .textStyle(boldText)
+                    .make()
+                    .p12()
+                    .objectCenterRight(),
+                _createAccountLabel().objectBottomCenter(),
+              ],
+              alignment: MainAxisAlignment.center,
+              crossAlignment: CrossAxisAlignment.center,
+              axisSize: MainAxisSize.max,
+            ).scrollVertical(),
+          ).make().p12(),
+          BackButtonWidget(
+            title: 'Back',
+            iconData: Icons.arrow_back_ios_outlined,
+            onPressed: () => Get.back(),
           ),
-          Positioned(top: 40, left: 0, child: _backButton()),
         ],
       ),
-    ));
+    ).make());
   }
 }

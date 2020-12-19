@@ -48,6 +48,8 @@ class MyApp extends StatelessWidget {
         //Loading
         return Center(
           child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             color: Colors.white,
             child: CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation(Color(0xFFd1a17b)),

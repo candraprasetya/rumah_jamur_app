@@ -29,21 +29,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-          text: 'Rum',
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-          ),
+          text: 'Rumah',
+          style: boldText.copyWith(fontSize: 28),
           children: [
             TextSpan(
-              text: 'ah',
-              style: TextStyle(color: Colors.black, fontSize: 30),
-            ),
-            TextSpan(
-              text: 'Jamur',
-              style: TextStyle(color: Colors.white, fontSize: 30),
-            ),
+                text: 'Jamur',
+                style: lightText.copyWith(fontSize: 28, color: Colors.white)),
           ]),
     );
   }
