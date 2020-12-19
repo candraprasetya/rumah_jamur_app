@@ -1,10 +1,6 @@
 part of 'screens.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  WelcomeScreen({Key key, this.title}) : super(key: key);
-
-  final String title;
-
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
@@ -29,9 +25,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-          text: 'Rumah',
-          style: boldText.copyWith(fontSize: 28),
+          text: 'Welcome to \n\n',
+          style: boldText.copyWith(fontSize: 20),
           children: [
+            TextSpan(
+              text: 'Rumah',
+              style: boldText.copyWith(fontSize: 28),
+            ),
             TextSpan(
                 text: 'Jamur',
                 style: lightText.copyWith(fontSize: 28, color: Colors.white)),
@@ -42,60 +42,37 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              boxShadow: <BoxShadow>[
-                BoxShadow(
-                    color: Colors.grey.shade200,
-                    offset: Offset(2, 4),
-                    blurRadius: 5,
-                    spreadRadius: 2)
-              ],
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Warna.primary.withOpacity(.9),
-                    Warna.accent.withOpacity(.7)
-                  ])),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              _title(),
-              SizedBox(
-                height: 80,
-              ),
-              MyButton(
-                color: Warna.white,
-                textColor: Vx.gray800,
-                text: 'Masuk',
-                onPress: () {
-                  Get.toNamed('/login');
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              MyButton(
-                color: Warna.primary,
-                textColor: Warna.white,
-                text: 'Daftar',
-                onPress: () {
-                  Get.toNamed('/register');
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-            ],
+      body: VxBox(
+              child: ZStack([
+        _title().objectCenter(),
+        VStack([
+          80.heightBox,
+          MyButton(
+            color: Warna.white,
+            textColor: Vx.gray800,
+            text: 'Masuk',
+            onPress: () {
+              Get.toNamed('/login');
+            },
           ),
-        ),
-      ),
+          20.heightBox,
+          MyButton(
+            color: Warna.darkBrown,
+            textColor: Warna.white,
+            text: 'Daftar',
+            onPress: () {
+              Get.toNamed('/register');
+            },
+          ),
+        ],
+            alignment: MainAxisAlignment.end,
+            crossAlignment: CrossAxisAlignment.center,
+            axisSize: MainAxisSize.max),
+      ]))
+          .linearGradient([Warna.primary, Warna.accent])
+          .p16
+          .make()
+          .whFull(context),
     );
   }
 }
