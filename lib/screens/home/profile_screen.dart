@@ -32,7 +32,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation(Warna.primary),
-                  ).centered();
+                  ).centered().p16();
                 }
                 return VStack([
                   HStack(
@@ -88,6 +88,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             color: Warna.red,
             text: 'Keluar',
             onPress: () {
+              box.remove('UID');
               AuthServices.signOut();
               Get.offAllNamed('/welcome');
             },

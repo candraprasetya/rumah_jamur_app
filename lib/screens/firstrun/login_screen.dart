@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
               transitionCurve: Curves.easeOutQuint);
           Result result = await AuthServices.signInEmail(email, password);
           if (result.userModel != null) {
-            Get.offAllNamed('/home', arguments: result.userModel.uid);
+            Get.offAllNamed('/home');
           } else {
             Get.back();
             Get.snackbar('Error', result.message);

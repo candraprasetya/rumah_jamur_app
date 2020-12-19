@@ -14,7 +14,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        Get.offAllNamed('/home', arguments: userModel.uid);
+        Get.offAllNamed('/home');
         return;
       },
       child: Scaffold(
@@ -32,7 +32,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
             text: 'Kembali Ke Halaman Utama',
             color: Warna.accent,
             onPress: () {
-              Get.offAndToNamed('/home', arguments: userModel.uid);
+              Get.offAndToNamed('/home');
             },
           ).p16(),
           8.heightBox,

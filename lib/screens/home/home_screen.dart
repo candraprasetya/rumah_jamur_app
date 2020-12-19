@@ -14,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         backgroundColor: Warna.white,
         body: FutureBuilder<UserModel>(
-          future: UserServices.getUser(Get.arguments),
+          future: UserServices.getUser(box.read('UID')),
           builder: (BuildContext context, AsyncSnapshot<UserModel> snapshot) {
             if (snapshot.hasError) {
               return ErrorScreen();

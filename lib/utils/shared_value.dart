@@ -53,3 +53,5 @@ TextStyle lightText = TextStyle(
   fontWeight: FontWeight.w200,
   fontSize: 14,
 );
+
+final box = GetStorage();

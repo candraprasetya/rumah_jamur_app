@@ -12,8 +12,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   void initState() {
     super.initState();
     if (auth.currentUser != null) {
+      box.write('UID', auth.currentUser.uid);
       Future.delayed(Duration.zero, () {
-        Get.offAllNamed('/home', arguments: auth.currentUser.uid);
+        Get.offAllNamed('/home');
       });
     }
   }
