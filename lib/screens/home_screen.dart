@@ -6,7 +6,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  FirebaseAuth auth = FirebaseAuth.instance;
   TextEditingController kodeController = TextEditingController();
   PageController pageController = PageController();
 
@@ -15,10 +14,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         backgroundColor: Warna.white,
         body: FutureBuilder<UserModel>(
-          future: UserServices.getUser(auth.currentUser.uid),
+          future: UserServices.getUser(Get.arguments),
           builder: (BuildContext context, AsyncSnapshot<UserModel> snapshot) {
             if (snapshot.hasError) {
-              return Text("Something went wrong").centered();
+              return ErrorScreen();
             }
 
             if (snapshot.connectionState == ConnectionState.done) {

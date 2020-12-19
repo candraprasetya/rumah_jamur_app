@@ -41,7 +41,7 @@ class AuthServices {
   }
 
   static void signOut() async {
-    await FirebaseAuth.instance.signOut();
+    await auth.signOut();
   }
 
   static Stream<User> get userStream =>

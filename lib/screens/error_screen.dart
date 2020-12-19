@@ -14,19 +14,32 @@ class _ErrorScreenState extends State<ErrorScreen> {
         return;
       },
       child: Scaffold(
-        backgroundColor: Warna.white,
+        backgroundColor: Warna.red.withOpacity(.8),
         body: VStack([
           Lottie.asset('assets/animations/oops.json').wh48(context).centered(),
           10.heightBox,
-          'Something went wrong'.text.color(Warna.red).xl4.makeCentered(),
-          20.heightBox,
-          MyButton(
-            text: 'Kembali Ke Halaman Utama',
-            color: Warna.accent,
-            onPress: () {
-              Get.offAllNamed('/home');
+          'Something went wrong'
+              .text
+              .textStyle(boldText.copyWith(
+                fontSize: 20,
+              ))
+              .makeCentered(),
+          6.heightBox,
+          'Periksa kembali koneksi anda'
+              .text
+              .textStyle(primaryText.copyWith(
+                fontSize: 16,
+              ))
+              .makeCentered(),
+          40.heightBox,
+          IconButton(
+            color: Warna.darkBrown,
+            iconSize: 42,
+            icon: Icon(Icons.refresh_outlined),
+            onPressed: () {
+              Get.offAllNamed('welcome');
             },
-          ).p16()
+          ).objectCenter()
         ], alignment: MainAxisAlignment.center)
             .hFull(context),
       ),

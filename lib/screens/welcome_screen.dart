@@ -12,11 +12,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   void initState() {
     super.initState();
     if (auth.currentUser != null) {
-      setState(() {
-        sharedID = auth.currentUser.uid;
-      });
       Future.delayed(Duration.zero, () {
-        Get.offAllNamed('/home');
+        Get.offAllNamed('/home', arguments: auth.currentUser.uid);
       });
     }
   }

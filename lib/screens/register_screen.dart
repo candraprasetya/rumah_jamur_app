@@ -48,7 +48,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             nim.toUpperCase() +
                             "/300/300"));
             if (result.userModel != null) {
-              Get.offAllNamed('/home');
+              Get.offAllNamed('/home', arguments: result.userModel.uid);
             } else {
               Get.back();
               Get.snackbar('Error', result.message,
