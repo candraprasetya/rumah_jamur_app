@@ -30,19 +30,39 @@ class PresensiService {
     presensiCollection.doc(code).delete();
   }
 
-  static Future<void> userPresensi(String code, String uid) async {
-    userCollection.doc(uid).collection('presensi').doc(code).set({
+  static Future<void> userPresensi(String code, UserModel userModel) async {
+    presensiCollection.doc(code).collection('hadir').doc(userModel.uid).set({
       'code': code,
-      'uid': uid,
+      'uid': userModel.uid,
+      'nama': userModel.nama,
+      'nim': userModel.nim,
+      'izin': false,
+      'keteranganIzin': '',
+      'date': DateTime.now().millisecondsSinceEpoch
+    });
+    userCollection.doc(userModel.uid).collection('presensi').doc(code).set({
+      'code': code,
+      'uid': userModel.uid,
       'izin': false,
       'keteranganIzin': '',
       'date': DateTime.now().millisecondsSinceEpoch
     });
   }
 
-  static Future<void> userIzin(String code, String uid, String ket) async {
+  static Future<void> userIzin(
+      String code, UserModel userModel, String ket) async {
+    presensiCollection
+        .doc(code)
+        .collection('hadir')
+        .doc(userModel.uid)
+        .update({
+          'izin': true,
+          'keteranganIzin': ket,
+        })
+        .then((value) => print("User Updated"))
+        .catchError((error) => print("Failed to update user: $error"));
     userCollection
-        .doc(uid)
+        .doc(userModel.uid)
         .collection('presensi')
         .doc(code)
         .update({

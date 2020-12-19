@@ -24,7 +24,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             60.heightBox,
           ],
         ).scrollVertical(),
-      ).size(context.screenWidth, context.screenHeight).make(),
+      ).p16.size(context.screenWidth, context.screenHeight).make(),
     );
   }
 

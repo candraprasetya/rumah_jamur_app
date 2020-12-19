@@ -9,3 +9,4 @@ part 'button_widget.dart';
 part 'container_widget.dart';
 part 'barchart_widget.dart';
 part 'back_button_widget.dart';
+part 'icon_button_widget.dart';

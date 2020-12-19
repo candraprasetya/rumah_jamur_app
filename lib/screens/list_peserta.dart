@@ -6,8 +6,10 @@ class ListPeserta extends StatefulWidget {
 }
 
 class _ListPesertaState extends State<ListPeserta> {
-  CollectionReference presensis =
-      FirebaseFirestore.instance.collection('users');
+  CollectionReference presensis = FirebaseFirestore.instance
+      .collection('presensi')
+      .doc(Get.arguments)
+      .collection('hadir');
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +59,26 @@ class _ListPesertaState extends State<ListPeserta> {
                         fontSize: 18,
                       ),
                     ),
-                    10.heightBox,
+                    4.heightBox,
                     Text(document.data()['nim'],
                         style: primaryText.copyWith(
                             fontSize: 14,
+                            color: Warna.darkBrown.withOpacity(.7))),
+                    10.heightBox,
+                    Text(
+                      document.data()['izin'] ? "Izin" : "Hadir",
+                      style: primaryText.copyWith(
+                          fontSize: 12,
+                          color: document.data()['izin']
+                              ? Warna.green
+                              : Warna.blue),
+                    ),
+                    Text(
+                        DateFormat.yMMMMd().add_jm().format(
+                            DateTime.fromMicrosecondsSinceEpoch(
+                                document.data()['date'] * 1000)),
+                        style: primaryText.copyWith(
+                            fontSize: 12,
                             color: Warna.darkBrown.withOpacity(.7))),
                   ]))
                       .roundedSM

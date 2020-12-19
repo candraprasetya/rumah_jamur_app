@@ -16,22 +16,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
         backgroundColor: Warna.white,
         body: VStack([
           20.heightBox,
-          widget.user.nama.text.textStyle(boldText).xl2.make().px16(),
+          widget.user.nama.text.textStyle(boldText).xl2.make(),
           20.heightBox,
-          "Email : ${widget.user.email}"
-              .text
-              .textStyle(primaryText)
-              .xs
-              .make()
-              .px16(),
+          "Email : ${widget.user.email}".text.textStyle(primaryText).xs.make(),
           10.heightBox,
-          "Nim : ${widget.user.nim}"
-              .text
-              .textStyle(primaryText)
-              .xs
-              .make()
-              .px16(),
-          20.heightBox,
+          "Nim : ${widget.user.nim}".text.textStyle(primaryText).xs.make(),
+          28.heightBox,
           FutureBuilder<KehadiranModel>(
               future: PresensiService.getCount(widget.user.uid),
               builder: (context, snapshot) {
@@ -84,26 +74,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ).centered(),
                 ], alignment: MainAxisAlignment.spaceBetween);
               }),
-          20.heightBox,
           (widget.user.role == "panitia")
-              ? MyButton(
-                  color: Warna.blue,
-                  text: 'Lihat Jadwal',
-                  onPress: () {
-                    Get.toNamed('/jadwal', arguments: widget.user.uid);
+              ? MyIconButton(
+                  icon: Icons.calendar_today_rounded,
+                  onPressed: () {
+                    Get.toNamed('/jadwal');
                   },
+                  text: 'Jadwal',
                 )
-              : 16.heightBox,
-          16.heightBox,
-          (widget.user.role == "panitia")
-              ? MyButton(
-                  color: Warna.green,
-                  text: 'Lihat Peserta',
-                  onPress: () {
-                    Get.toNamed('/peserta');
-                  },
-                )
-              : 16.heightBox,
+              : 40.heightBox,
           16.heightBox,
           MyButton(
             color: Warna.red,
@@ -114,7 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             },
           ),
           16.heightBox,
-        ]).scrollVertical());
+        ]).p16().scrollVertical());
   }
 
   List<PieChartSectionData> showingSections(

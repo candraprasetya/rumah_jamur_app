@@ -7,7 +7,7 @@ class IzinScreen extends StatefulWidget {
 
 class _IzinScreenState extends State<IzinScreen> {
   TextEditingController keterangan = TextEditingController();
-  String uid = Get.arguments[0];
+  UserModel userModel = Get.arguments[0];
   String code = Get.arguments[1];
   @override
   Widget build(BuildContext context) {
@@ -60,9 +60,14 @@ class _IzinScreenState extends State<IzinScreen> {
                       barrierDismissible: false,
                       transitionCurve: Curves.easeOutQuint);
                   if (!keterangan.text.isEmptyOrNull) {
-                    await PresensiService.userIzin(code, uid, keterangan.text);
+                    await PresensiService.userIzin(
+                            code, userModel, keterangan.text)
+                        .then((value) => Get.offAllNamed('/success',
+                            arguments: ["izin", userModel, '']));
+                  } else {
+                    Get.back();
+                    Get.snackbar("Error", "Isi keterangan terlebih dahulu");
                   }
-                  Get.offAllNamed('/success', arguments: ["izin", '', '']);
                 },
               ).objectBottomCenter(),
             ],

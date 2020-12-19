@@ -7,7 +7,7 @@ class SuccessScreen extends StatefulWidget {
 
 class _SuccessScreenState extends State<SuccessScreen> {
   String tag = Get.arguments[0];
-  String uid = Get.arguments[1];
+  UserModel userModel = Get.arguments[1];
   String code = Get.arguments[2];
 
   @override
@@ -49,7 +49,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
                         ),
                       ]),
                 ).objectCenter().onTap(() {
-                  Get.offAllNamed('/izin', arguments: [uid, code]);
+                  Get.offAllNamed('/izin', arguments: [userModel, code]);
                 })
               : 0.heightBox,
         ], alignment: MainAxisAlignment.center)

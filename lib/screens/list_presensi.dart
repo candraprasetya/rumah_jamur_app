@@ -156,11 +156,13 @@ class _ListPresensiState extends State<ListPresensi> {
                         .wFull(context)
                         .pSymmetric(v: 8, h: 16)
                         .onTap(() {
-                      Get.toNamed('/qrview', arguments: [
-                        Uint8List(0),
-                        document.data()['code'],
-                        document.data()['qrUrl']
-                      ]);
+                      Get.toNamed('/peserta',
+                          arguments: document.data()['code']);
+                      // Get.toNamed('/qrview', arguments: [
+                      //   Uint8List(0),
+                      //   document.data()['code'],
+                      //   document.data()['qrUrl']
+                      // ]);
                     });
                   }).toList(),
                 );

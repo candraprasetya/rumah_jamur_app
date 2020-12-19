@@ -6,7 +6,7 @@ class CodePresensi extends StatefulWidget {
 }
 
 class _CodePresensiState extends State<CodePresensi> {
-  String uid = Get.arguments;
+  UserModel userModel = Get.arguments;
   TextEditingController kodeController = TextEditingController();
   Widget _backButton() {
     return InkWell(
@@ -73,8 +73,9 @@ class _CodePresensiState extends State<CodePresensi> {
                     Get.snackbar(
                         'Gagal Presensi', 'Kode yang anda masukkan salah');
                   } else {
-                    await PresensiService.userPresensi(kode, uid);
-                    Get.offAllNamed('/success', arguments: ['', uid, kode]);
+                    await PresensiService.userPresensi(kode, userModel);
+                    Get.offAllNamed('/success',
+                        arguments: ['', userModel, kode]);
                   }
                 },
               )
