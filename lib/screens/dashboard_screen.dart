@@ -33,18 +33,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       textAlign: TextAlign.start,
       text: TextSpan(
           text: 'Rumah',
-          style: boldText.copyWith(
-            fontSize: 30,
-            color: Warna.primary,
-          ),
+          style: boldText.copyWith(fontSize: 28, color: Warna.darkBrown),
           children: [
             TextSpan(
-              text: 'Jamur',
-              style: lightText.copyWith(
-                fontSize: 30,
-                color: Warna.gainsboro,
-              ),
-            ),
+                text: 'Jamur',
+                style:
+                    lightText.copyWith(fontSize: 28, color: Warna.darkBrown)),
           ]),
     );
   }
@@ -54,11 +48,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       textAlign: TextAlign.start,
       text: TextSpan(
           text: 'Selamat ${greeting()}, ',
-          style: lightText,
+          style: primaryText,
           children: [
             TextSpan(
               text: '\n${user.nama}',
-              style: primaryText.copyWith(
+              style: boldText.copyWith(
                 fontSize: 18,
                 color: Warna.accent,
               ),
