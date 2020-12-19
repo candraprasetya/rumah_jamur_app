@@ -11,27 +11,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController nimController = TextEditingController();
 
-  Widget _backButton() {
-    return InkWell(
-        onTap: () {
-          Navigator.pop(context);
-        },
-        child: HStack(
-          [
-            IconButton(
-                icon: Icon(Icons.arrow_back_ios_outlined),
-                color: Warna.darkBrown,
-                onPressed: () => Get.back()),
-            'Back'
-                .text
-                .color(Warna.darkBrown)
-                .textStyle(boldText.copyWith(fontSize: 12))
-                .make()
-          ],
-          crossAlignment: CrossAxisAlignment.center,
-        ));
-  }
-
   Widget _submitButton() {
     return MyButton(
         text: 'Daftar',
@@ -85,29 +64,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
         Get.offAndToNamed('/login');
       },
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 20),
-        padding: EdgeInsets.all(15),
-        alignment: Alignment.bottomCenter,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Sudah Punya Akun ?',
-              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            Text(
-              'Masuk',
-              style: TextStyle(
-                  color: Warna.primary,
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600),
-            ),
-          ],
-        ),
-      ),
+          margin: EdgeInsets.symmetric(vertical: 20),
+          padding: EdgeInsets.all(15),
+          alignment: Alignment.bottomCenter,
+          child: HStack(
+            [
+              'Sudah punya akun?'
+                  .text
+                  .textStyle(primaryText.copyWith(fontSize: 14))
+                  .make(),
+              6.widthBox,
+              'Masuk disini'
+                  .text
+                  .textStyle(
+                      boldText.copyWith(fontSize: 14, color: Warna.primary))
+                  .make()
+            ],
+            alignment: MainAxisAlignment.center,
+          )),
     );
   }
 
@@ -156,43 +130,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Container(
-        height: height,
-        child: Stack(
-          children: <Widget>[
+      body: VxBox(
+        child: ZStack(
+          [
             Positioned(
-              top: -MediaQuery.of(context).size.height * .15,
-              right: -MediaQuery.of(context).size.width * .4,
-              child: MyContainer(),
+                top: -context.screenHeight * .24,
+                right: -context.screenWidth * .4,
+                child: MyContainer()),
+            VxBox(
+              child: VStack(
+                [
+                  (context.screenHeight * .16).heightBox,
+                  _title(),
+                  46.heightBox,
+                  _emailPasswordWidget(),
+                  24.heightBox,
+                  _submitButton(),
+                  _loginAccountLabel().objectBottomCenter(),
+                ],
+                alignment: MainAxisAlignment.center,
+                crossAlignment: CrossAxisAlignment.center,
+                axisSize: MainAxisSize.max,
+              ).scrollVertical(),
+            ).make().p12(),
+            BackButtonWidget(
+              title: 'Back',
+              iconData: Icons.arrow_back_ios_outlined,
+              onPressed: () => Get.back(),
             ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(height: height * .2),
-                    _title(),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    _emailPasswordWidget(),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    _submitButton(),
-                    _loginAccountLabel(),
-                  ],
-                ),
-              ),
-            ),
-            Positioned(top: 40, left: 0, child: _backButton()),
           ],
         ),
-      ),
+      ).make(),
     );
   }
 }

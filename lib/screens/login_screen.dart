@@ -52,12 +52,12 @@ class _LoginScreenState extends State<LoginScreen> {
           alignment: Alignment.bottomCenter,
           child: HStack(
             [
-              'Don\'t have an account ?'
+              'Bellum punya akun?'
                   .text
                   .textStyle(primaryText.copyWith(fontSize: 14))
                   .make(),
               6.widthBox,
-              'Register'
+              'Daftar disini'
                   .text
                   .textStyle(
                       boldText.copyWith(fontSize: 14, color: Warna.primary))
