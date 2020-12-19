@@ -67,7 +67,10 @@ class _DetailPesertaState extends State<DetailPeserta> {
                     [
                       'Total Kehadiran : '.text.textStyle(primaryText).make(),
                       VxBox(
-                        child: snapshot.data.kehadiran.text.white
+                        child: snapshot.data.kehadiran
+                            .toStringAsFixed(0)
+                            .text
+                            .white
                             .textStyle(boldText.copyWith(fontSize: 32))
                             .make(),
                       ).p32.color(Warna.blue).roundedFull.makeCentered()
@@ -79,7 +82,7 @@ class _DetailPesertaState extends State<DetailPeserta> {
                     [
                       'Total Izin : '.text.textStyle(primaryText).make(),
                       VxBox(
-                        child: snapshot.data.izin.text.white
+                        child: snapshot.data.izin.toStringAsFixed(0).text.white
                             .textStyle(boldText.copyWith(fontSize: 32))
                             .make(),
                       ).p32.color(Warna.green).roundedFull.makeCentered()
@@ -91,7 +94,7 @@ class _DetailPesertaState extends State<DetailPeserta> {
                     [
                       'Tidak Hadir : '.text.textStyle(primaryText).make(),
                       VxBox(
-                        child: snapshot.data.bolos.text.white
+                        child: snapshot.data.bolos.toStringAsFixed(0).text.white
                             .textStyle(boldText.copyWith(fontSize: 32))
                             .make(),
                       ).p32.color(Warna.red).roundedFull.makeCentered()

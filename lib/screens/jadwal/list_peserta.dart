@@ -16,23 +16,11 @@ class _ListPesertaState extends State<ListPeserta> {
     return Scaffold(
       backgroundColor: Warna.white,
       body: VStack([
-        SafeArea(
-            child: VxBox(
-                    child: HStack(
-          [
-            IconButton(
-                icon: Icon(Icons.arrow_back_ios),
-                onPressed: () {
-                  Get.back();
-                }),
-            'List Peserta'.text.textStyle(boldText).maxLines(1).makeCentered(),
-          ],
-          axisSize: MainAxisSize.max,
-        ))
-                .py12
-                .size(context.screenWidth, context.percentHeight * 12)
-                .color(Warna.white)
-                .make()),
+        BackButtonWidget(
+          iconData: Icons.arrow_back_ios_outlined,
+          onPressed: () {},
+          title: 'List Peserta',
+        ),
         Expanded(
           child: StreamBuilder<QuerySnapshot>(
             stream: presensis.snapshots(),

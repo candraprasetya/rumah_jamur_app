@@ -108,7 +108,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           return PieChartSectionData(
             color: Warna.blue,
             value: hadir ?? 0,
-            title: hadir <= 0 ? '' : hadir.toString(),
+            title: hadir <= 0 ? '' : hadir.toStringAsFixed(0),
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize,
@@ -119,7 +119,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           return PieChartSectionData(
             color: Warna.green,
             value: izin ?? 0,
-            title: izin <= 0 ? '' : izin.toString(),
+            title: izin <= 0 ? '' : izin.toStringAsFixed(0),
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize,
@@ -130,7 +130,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           return PieChartSectionData(
             color: Warna.red,
             value: bolos ?? 0,
-            title: bolos <= 0 ? '' : bolos.toString(),
+            title: bolos <= 0 ? '' : bolos.toStringAsFixed(0),
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize,
