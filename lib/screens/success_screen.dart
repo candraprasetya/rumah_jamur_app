@@ -14,7 +14,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        Get.offAllNamed('/home');
+        Get.offAllNamed('/home', arguments: userModel.uid);
         return;
       },
       child: Scaffold(
