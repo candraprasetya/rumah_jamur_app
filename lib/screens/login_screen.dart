@@ -60,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
               'Daftar disini'
                   .text
                   .textStyle(
-                      boldText.copyWith(fontSize: 14, color: Warna.primary))
+                      boldText.copyWith(fontSize: 14, color: Warna.accent))
                   .make()
             ],
             alignment: MainAxisAlignment.center,
@@ -73,11 +73,12 @@ class _LoginScreenState extends State<LoginScreen> {
       textAlign: TextAlign.center,
       text: TextSpan(
           text: 'Rumah',
-          style: boldText.copyWith(fontSize: 28, color: Warna.primary),
+          style: boldText.copyWith(fontSize: 28, color: Warna.darkBrown),
           children: [
             TextSpan(
                 text: 'Jamur',
-                style: lightText.copyWith(fontSize: 28, color: Warna.accent)),
+                style:
+                    lightText.copyWith(fontSize: 28, color: Warna.darkBrown)),
           ]),
     );
   }
