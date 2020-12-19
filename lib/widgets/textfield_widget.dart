@@ -13,12 +13,18 @@ class TextFieldKu extends StatelessWidget {
     return VxBox(
             child: TextField(
       controller: controller,
+      style: primaryText.copyWith(
+        fontSize: 12,
+      ),
       keyboardType: inputType ?? TextInputType.text,
       obscureText: isPassword ?? false,
       decoration: InputDecoration(
           border: InputBorder.none,
           hintText: keterangan ?? "Keterangan",
-          hintStyle: TextStyle(color: Color(0xFFA0A3BD), fontSize: 12)),
+          hintStyle: primaryText.copyWith(
+            fontSize: 12,
+            color: Warna.rosyBrown,
+          )),
     ))
         .padding(EdgeInsets.symmetric(
           horizontal: 18,

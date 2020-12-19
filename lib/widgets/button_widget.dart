@@ -9,7 +9,12 @@ class MyButton extends StatelessWidget {
       {this.text, this.onPress, this.color, this.textColor = Colors.white});
   @override
   Widget build(BuildContext context) {
-    return VxBox(child: text.text.color(textColor).xl.makeCentered())
+    return VxBox(
+            child: text.text
+                .color(textColor)
+                .textStyle(primaryText)
+                .xl
+                .makeCentered())
         .width(context.screenWidth)
         .p16
         .linearGradient([

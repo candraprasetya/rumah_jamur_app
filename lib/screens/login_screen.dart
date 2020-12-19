@@ -12,7 +12,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _backButton() {
     return InkWell(
       onTap: () {
-        Navigator.pop(context);
+        Get.back();
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 10),

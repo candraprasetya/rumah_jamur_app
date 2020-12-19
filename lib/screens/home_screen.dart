@@ -62,9 +62,35 @@ class _HomeScreenState extends State<HomeScreen> {
                       }),
                   SCItem(
                       icon: Icon(Icons.qr_code_scanner, color: Warna.gray),
-                      onPressed: () {
-                        Get.snackbar(
-                            "Under Development", "Sedang dikembangkan");
+                      onPressed: () async {
+                        await Permission.camera.request();
+                        String code = await scanner.scan();
+                        Get.dialog(
+                            BackdropFilter(
+                              filter: ImageFilter.blur(sigmaY: 18, sigmaX: 18),
+                              child: CircularProgressIndicator(
+                                valueColor:
+                                    AlwaysStoppedAnimation(Warna.primary),
+                              ).centered(),
+                            ),
+                            barrierColor: Warna.white.withOpacity(.2),
+                            barrierDismissible: false,
+                            transitionCurve: Curves.easeOutQuint);
+                        bool presensi =
+                            await PresensiService.checkPresensi(code);
+                        if (!code.isEmptyOrNull) {
+                          Get.back();
+                        }
+                        if (!presensi) {
+                          Get.back();
+                          Get.snackbar('Gagal Presensi',
+                              'Kode yang anda masukkan salah');
+                        } else {
+                          await PresensiService.userPresensi(
+                              code, auth.currentUser.uid);
+                          Get.offAllNamed('/success',
+                              arguments: ['', auth.currentUser.uid, code]);
+                        }
                       }),
                 ],
                 bnbHeight: 80),
@@ -73,29 +99,22 @@ class _HomeScreenState extends State<HomeScreen> {
               builder:
                   (BuildContext context, AsyncSnapshot<UserModel> snapshot) {
                 if (snapshot.hasError) {
-                  return Text("Something went wrong");
+                  return Text("Something went wrong").centered();
                 }
 
                 if (snapshot.connectionState == ConnectionState.done) {
                   return SafeArea(
                       child: PageView(
+                    physics: NeverScrollableScrollPhysics(),
                     controller: pageController,
                     onPageChanged: (value) {
                       print(value);
                     },
                     children: [
-                      VxBox(
-                        child: VStack(
-                          [
-                            _title(snapshot.data),
-                          ],
-                          alignment: MainAxisAlignment.spaceBetween,
-                        ),
-                      )
-                          .size(context.screenWidth, context.screenHeight)
-                          .make()
-                          .p16(),
-                      ProfileScreen().p16(),
+                      DashBoardScreen(model: snapshot.data).p16(),
+                      ProfileScreen(
+                        user: snapshot.data,
+                      ).p16(),
                     ],
                   ));
                 }
@@ -105,33 +124,5 @@ class _HomeScreenState extends State<HomeScreen> {
                 ).centered();
               },
             )));
-  }
-
-  Widget _title(UserModel user) {
-    return RichText(
-      textAlign: TextAlign.start,
-      text: TextSpan(
-          text: 'Rumah',
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.w600,
-            color: Warna.primary,
-          ),
-          children: [
-            TextSpan(
-              text: 'Jamur',
-              style: TextStyle(color: Colors.black, fontSize: 30),
-            ),
-            TextSpan(
-              text: '\n\nSelamat Datang, ',
-              style: TextStyle(
-                  color: Vx.gray800, fontSize: 14, fontWeight: FontWeight.w300),
-            ),
-            TextSpan(
-              text: '${user.nama}',
-              style: TextStyle(color: Vx.gray800, fontSize: 14),
-            ),
-          ]),
-    );
   }
 }

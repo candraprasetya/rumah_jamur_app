@@ -10,16 +10,19 @@ class UserServices {
       'nim': user.nim,
       'noTelephone': user.noTelephone,
       'photoUrl': user.photoUrl ?? '',
+      'role': user.role ?? 'anggota'
     });
   }
 
   static Future<void> setUser(UserModel user) async {
     userCollection.doc(user.uid).set({
+      'uid': user.uid,
       'email': user.email,
       'nama': user.nama,
       'nim': user.nim,
       'noTelephone': user.noTelephone,
       'photoUrl': user.photoUrl ?? '',
+      'role': user.role ?? 'anggota'
     });
   }
 
@@ -34,6 +37,7 @@ class UserServices {
         nama: data['nama'],
         nim: data['nim'],
         noTelephone: data['noTelephone'],
-        photoUrl: data['photoUrl']);
+        photoUrl: data['photoUrl'],
+        role: data['role']);
   }
 }

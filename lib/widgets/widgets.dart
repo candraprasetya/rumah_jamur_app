@@ -7,3 +7,4 @@ import 'package:velocity_x/velocity_x.dart';
 part 'textfield_widget.dart';
 part 'button_widget.dart';
 part 'container_widget.dart';
+part 'barchart_widget.dart';

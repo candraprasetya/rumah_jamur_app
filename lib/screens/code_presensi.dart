@@ -66,15 +66,15 @@ class _CodePresensiState extends State<CodePresensi> {
                       barrierDismissible: false,
                       transitionCurve: Curves.easeOutQuint);
                   String kode = kodeController.text.trim();
-                  bool presensi = await PresensiService.getPresensi(kode);
+                  bool presensi = await PresensiService.checkPresensi(kode);
 
                   if (!presensi) {
+                    Get.back();
                     Get.snackbar(
                         'Gagal Presensi', 'Kode yang anda masukkan salah');
-                    Get.back();
                   } else {
                     await PresensiService.userPresensi(kode, uid);
-                    Get.offAndToNamed('/success');
+                    Get.offAllNamed('/success', arguments: ['', uid, kode]);
                   }
                 },
               )

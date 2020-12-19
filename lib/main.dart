@@ -3,7 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rumah_jamur/screens/screens.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 //fungsi main
 void main() {
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
       builder: (context, snapshot) {
         //No Internet
         if (snapshot.hasError) {
-          return Text('Cek Koneksi Internet Kamu');
+          return ErrorScreen();
         }
         //Main App
         if (snapshot.connectionState == ConnectionState.done) {
@@ -30,21 +29,31 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             initialRoute: '/welcome',
             getPages: [
+              GetPage(name: '/qrview', page: () => QrView()),
+              GetPage(name: '/jadwal', page: () => ListPresensi()),
               GetPage(name: '/success', page: () => SuccessScreen()),
               GetPage(name: '/code', page: () => CodePresensi()),
-              GetPage(name: '/qr', page: () => QrPresensi()),
               GetPage(name: '/welcome', page: () => WelcomeScreen()),
               GetPage(name: '/login', page: () => LoginScreen()),
               GetPage(name: '/register', page: () => RegisterScreen()),
               GetPage(name: '/home', page: () => HomeScreen()),
               GetPage(name: '/profile', page: () => ProfileScreen()),
-              GetPage(name: '/presensi', page: () => PresensiScreen())
+              GetPage(name: '/qr', page: () => QrGeneratorScreen()),
+              GetPage(name: '/error', page: () => ErrorScreen()),
+              GetPage(name: '/peserta', page: () => ListPeserta()),
+              GetPage(name: '/detail', page: () => DetailPeserta()),
+              GetPage(name: '/izin', page: () => IzinScreen()),
             ],
           );
         }
         //Loading
-        return Container(
-          color: Colors.white,
+        return Center(
+          child: Container(
+            color: Colors.white,
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation(Color(0xFFd1a17b)),
+            ),
+          ),
         );
       },
     );
