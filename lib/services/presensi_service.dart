@@ -103,22 +103,5 @@ class PresensiService {
         snapshot.size.toDouble() - snapshotAll.size.toDouble());
   }
 
-  static Future<List<PresensiModel>> getPresensi(
-      String code, String uid) async {
-    QuerySnapshot snapshot =
-        await presensiCollection.doc(code).collection('kehadiran').get();
-    var documents =
-        snapshot.docs.where((element) => element.data()['uid'] == uid);
-
-    List<PresensiModel> presensi = [];
-    for (var document in documents) {
-      presensi.add(PresensiModel(
-          code: document.data()['code'],
-          start: DateTime.fromMillisecondsSinceEpoch(document.data()['start']),
-          end: DateTime.fromMillisecondsSinceEpoch(document.data()['end']),
-          uid: document.data()['uid']));
-    }
-
-    return presensi;
-  }
+  
 }

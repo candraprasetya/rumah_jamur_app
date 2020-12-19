@@ -1,6 +1,7 @@
 part of 'models.dart';
 
 class BeritaModel {
+  final String code;
   final String judul;
   final String imageUrl;
   final String content;
@@ -8,6 +9,6 @@ class BeritaModel {
   final String nama;
   final DateTime date;
 
-  BeritaModel(
-      this.judul, this.imageUrl, this.content, this.uid, this.nama, this.date);
+  BeritaModel(this.code, this.judul, this.imageUrl, this.content, this.uid,
+      this.nama, this.date);
 }
