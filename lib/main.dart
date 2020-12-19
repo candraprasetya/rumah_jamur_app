@@ -38,7 +38,6 @@ class MyApp extends StatelessWidget {
               GetPage(name: '/register', page: () => RegisterScreen()),
               GetPage(name: '/home', page: () => HomeScreen()),
               GetPage(name: '/profile', page: () => ProfileScreen()),
-              GetPage(name: '/qr', page: () => QrGeneratorScreen()),
               GetPage(name: '/error', page: () => ErrorScreen()),
               GetPage(name: '/peserta', page: () => ListPeserta()),
               GetPage(name: '/detail', page: () => DetailPeserta()),

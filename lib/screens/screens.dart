@@ -31,7 +31,6 @@ part 'welcome_screen.dart';
 part 'code_presensi.dart';
 part 'success_screen.dart';
 part 'dashboard_screen.dart';
-part 'qr_generator_screen.dart';
 part 'qr_view.dart';
 part 'list_presensi.dart';
 part 'error_screen.dart';

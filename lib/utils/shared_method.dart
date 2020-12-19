@@ -14,3 +14,10 @@ Future<String> uploadQR(String code, String userId, Uint8List image) async {
 
   return await snapshot.ref.getDownloadURL();
 }
+
+Future deleteQR(String code, String userId) async {
+  String fileName = 'qr/$userId/$code.png';
+
+  Reference ref = FirebaseStorage.instance.ref().child(fileName);
+  await ref.delete().then((value) => print('Deleted'));
+}

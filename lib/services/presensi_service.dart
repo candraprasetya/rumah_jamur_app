@@ -11,8 +11,7 @@ class PresensiService {
       'code': presensi.code,
       'start': presensi.start,
       'end': presensi.end,
-      'judulKegiatan': presensi.judulKegiatan,
-      'keterangan': presensi.keterangan,
+      'uid': presensi.uid,
       'qrUrl': presensi.qrUrl,
     });
   }
@@ -22,8 +21,7 @@ class PresensiService {
       'code': presensi.code,
       'start': presensi.start ?? DateTime.now().millisecondsSinceEpoch,
       'end': presensi.end ?? DateTime.now().millisecondsSinceEpoch,
-      'judulKegiatan': presensi.judulKegiatan ?? '',
-      'keterangan': presensi.keterangan ?? '',
+      'uid': presensi.uid ?? '',
       'qrUrl': presensi.qrUrl ?? '',
     });
   }
@@ -98,8 +96,7 @@ class PresensiService {
           code: document.data()['code'],
           start: DateTime.fromMillisecondsSinceEpoch(document.data()['start']),
           end: DateTime.fromMillisecondsSinceEpoch(document.data()['end']),
-          judulKegiatan: document.data()['judulKegiatan'],
-          keterangan: document.data()['keterangan']));
+          uid: document.data()['uid']));
     }
 
     return presensi;
