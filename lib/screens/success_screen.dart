@@ -32,7 +32,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
             text: 'Kembali Ke Halaman Utama',
             color: Warna.accent,
             onPress: () {
-              Get.offAndToNamed('/home', arguments: userModel);
+              Get.offAndToNamed('/home', arguments: userModel.uid);
             },
           ).p16(),
           8.heightBox,
@@ -49,7 +49,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
                         ),
                       ]),
                 ).objectCenter().onTap(() {
-                  Get.offAllNamed('/izin', arguments: [userModel.uid, code]);
+                  Get.offAllNamed('/izin', arguments: [userModel, code]);
                 })
               : 0.heightBox,
         ], alignment: MainAxisAlignment.center)
