@@ -6,10 +6,12 @@ class ListPresensi extends StatefulWidget {
 }
 
 class _ListPresensiState extends State<ListPresensi> {
+  Uint8List bytes = Uint8List(0);
   CollectionReference presensis =
       FirebaseFirestore.instance.collection('presensi');
-  Uint8List bytes = Uint8List(0);
+
   String uid = Get.arguments;
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(

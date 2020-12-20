@@ -1,13 +1,13 @@
 part of 'models.dart';
 
 class PresensiModel {
-  final String code;
-  final DateTime start;
-  final DateTime end;
-  final String uid;
-  final String qrUrl;
-
   PresensiModel({this.code, this.start, this.end, this.uid, this.qrUrl});
+
+  final String code;
+  final DateTime end;
+  final String qrUrl;
+  final DateTime start;
+  final String uid;
 
   PresensiModel copyWith({String code, DateTime start, DateTime end}) {
     return PresensiModel(

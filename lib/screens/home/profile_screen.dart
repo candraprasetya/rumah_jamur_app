@@ -1,8 +1,9 @@
 part of '../screens.dart';
 
 class ProfileScreen extends StatefulWidget {
-  final UserModel user;
   const ProfileScreen({Key key, this.user}) : super(key: key);
+
+  final UserModel user;
 
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
@@ -10,6 +11,54 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   int touchedIndex = 0;
+
+  List<PieChartSectionData> showingSections(
+      double hadir, double izin, double bolos) {
+    return List.generate(3, (i) {
+      final isTouched = i == touchedIndex;
+      final double fontSize = isTouched ? 24 : 14;
+      final double radius = isTouched ? 46 : 40;
+      switch (i) {
+        case 0:
+          return PieChartSectionData(
+            color: Warna.blue,
+            value: hadir ?? 0,
+            title: hadir <= 0 ? '' : hadir.toStringAsFixed(0),
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize,
+                fontWeight: FontWeight.bold,
+                color: Warna.white),
+          );
+        case 1:
+          return PieChartSectionData(
+            color: Warna.green,
+            value: izin ?? 0,
+            title: izin <= 0 ? '' : izin.toStringAsFixed(0),
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize,
+                fontWeight: FontWeight.bold,
+                color: Warna.white),
+          );
+        case 2:
+          return PieChartSectionData(
+            color: Warna.red,
+            value: bolos ?? 0,
+            title: bolos <= 0 ? '' : bolos.toStringAsFixed(0),
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize,
+                fontWeight: FontWeight.bold,
+                color: Warna.white),
+          );
+
+        default:
+          return null;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,52 +153,5 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           16.heightBox,
         ]).p16().scrollVertical());
-  }
-
-  List<PieChartSectionData> showingSections(
-      double hadir, double izin, double bolos) {
-    return List.generate(3, (i) {
-      final isTouched = i == touchedIndex;
-      final double fontSize = isTouched ? 24 : 14;
-      final double radius = isTouched ? 46 : 40;
-      switch (i) {
-        case 0:
-          return PieChartSectionData(
-            color: Warna.blue,
-            value: hadir ?? 0,
-            title: hadir <= 0 ? '' : hadir.toStringAsFixed(0),
-            radius: radius,
-            titleStyle: TextStyle(
-                fontSize: fontSize,
-                fontWeight: FontWeight.bold,
-                color: Warna.white),
-          );
-        case 1:
-          return PieChartSectionData(
-            color: Warna.green,
-            value: izin ?? 0,
-            title: izin <= 0 ? '' : izin.toStringAsFixed(0),
-            radius: radius,
-            titleStyle: TextStyle(
-                fontSize: fontSize,
-                fontWeight: FontWeight.bold,
-                color: Warna.white),
-          );
-        case 2:
-          return PieChartSectionData(
-            color: Warna.red,
-            value: bolos ?? 0,
-            title: bolos <= 0 ? '' : bolos.toStringAsFixed(0),
-            radius: radius,
-            titleStyle: TextStyle(
-                fontSize: fontSize,
-                fontWeight: FontWeight.bold,
-                color: Warna.white),
-          );
-
-        default:
-          return null;
-      }
-    });
   }
 }

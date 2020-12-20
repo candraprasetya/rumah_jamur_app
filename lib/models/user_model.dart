@@ -1,17 +1,6 @@
 part of 'models.dart';
 
 class UserModel {
-  final String uid;
-  final String nama;
-  final String nim;
-  final String email;
-  final String photoUrl;
-  final String noTelephone;
-  final String role;
-  final double kehadiran;
-  final double izin;
-  final double bolos;
-
   UserModel(
       {this.uid,
       this.email,
@@ -23,6 +12,17 @@ class UserModel {
       this.kehadiran,
       this.izin,
       this.bolos});
+
+  final double bolos;
+  final String email;
+  final double izin;
+  final double kehadiran;
+  final String nama;
+  final String nim;
+  final String noTelephone;
+  final String photoUrl;
+  final String role;
+  final String uid;
 
   UserModel copyWith(
       {String uid,

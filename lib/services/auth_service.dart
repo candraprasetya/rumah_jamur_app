@@ -49,8 +49,8 @@ class AuthServices {
 }
 
 class Result {
-  final User userModel;
-  final String message;
-
   Result({this.userModel, this.message});
+
+  final String message;
+  final User userModel;
 }
