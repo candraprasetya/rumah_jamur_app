@@ -5,10 +5,12 @@ class TextFieldKu extends StatefulWidget {
   final String keterangan;
   final TextInputType inputType;
   final bool isPassword;
+  final bool multiLine;
   TextFieldKu(
       {this.controller,
       this.keterangan = "Keterangan",
       this.inputType,
+      this.multiLine = false,
       this.isPassword = false});
 
   @override
@@ -24,8 +26,11 @@ class _TextFieldKuState extends State<TextFieldKu> {
             child: TextField(
       controller: widget.controller,
       style: primaryText.copyWith(),
+      maxLines: (widget.multiLine) ? null : 1,
       keyboardType: widget.inputType ?? TextInputType.text,
       obscureText: widget.isPassword ? !showPassword : false,
+      textInputAction:
+          (widget.multiLine) ? TextInputAction.newline : TextInputAction.next,
       decoration: InputDecoration(
           suffixIcon: (widget.isPassword)
               ? IconButton(

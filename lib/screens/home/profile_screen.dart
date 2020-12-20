@@ -83,6 +83,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   text: 'Jadwal',
                 )
               : 40.heightBox,
+          (widget.user.role == "panitia")
+              ? MyIconButton(
+                  icon: Icons.book_online_outlined,
+                  onPressed: () {
+                    Get.toNamed('/addberita', arguments: widget.user);
+                  },
+                  text: 'Berita',
+                )
+              : 40.heightBox,
           16.heightBox,
           MyButton(
             color: Warna.red,

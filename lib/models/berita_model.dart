@@ -9,6 +9,12 @@ class BeritaModel {
   final String nama;
   final DateTime date;
 
-  BeritaModel(this.code, this.judul, this.imageUrl, this.content, this.uid,
-      this.nama, this.date);
+  BeritaModel(
+      {this.code,
+      this.judul,
+      this.imageUrl,
+      this.content,
+      this.uid,
+      this.nama,
+      this.date});
 }

@@ -55,3 +55,5 @@ TextStyle lightText = TextStyle(
 );
 
 final box = GetStorage();
+File fileImage;
+final imagePicker = ImagePicker();

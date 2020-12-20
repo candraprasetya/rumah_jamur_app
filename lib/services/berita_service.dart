@@ -12,9 +12,9 @@ class BeritaService {
       'nama': beritaModel.nama,
       'judul': beritaModel.judul,
       'date': beritaModel.date ?? DateTime.now().millisecondsSinceEpoch,
-      'content': beritaModel.content ?? DateTime.now().millisecondsSinceEpoch,
-      'uid': beritaModel.uid ?? '',
-      'imageUrl': beritaModel.imageUrl ?? '',
+      'content': beritaModel.content,
+      'uid': beritaModel.uid,
+      'imageUrl': beritaModel.imageUrl,
     });
   }
 

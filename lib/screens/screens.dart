@@ -1,13 +1,13 @@
 import 'dart:typed_data';
 import 'dart:ui';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
@@ -23,17 +23,22 @@ import 'package:qrscan/qrscan.dart' as scanner;
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:ui' as ui;
 
-part 'firstrun/login_screen.dart';
-part 'home/home_screen.dart';
-part 'home/profile_screen.dart';
 part 'firstrun/register_screen.dart';
 part 'firstrun/welcome_screen.dart';
+part 'firstrun/login_screen.dart';
+
+part 'home/home_screen.dart';
+part 'home/profile_screen.dart';
+part 'home/berita_screen.dart';
 part 'home/code_presensi.dart';
-part 'information/success_screen.dart';
 part 'home/dashboard_screen.dart';
-part 'information/qr_view.dart';
-part 'jadwal/list_presensi.dart';
-part 'information/error_screen.dart';
-part 'jadwal/list_peserta.dart';
-part 'jadwal/detail_peserta.dart';
+
+part 'information/success_screen.dart';
 part 'information/izin_screen.dart';
+part 'information/error_screen.dart';
+part 'information/qr_view.dart';
+
+part 'admin/list_presensi.dart';
+part 'admin/list_peserta.dart';
+part 'admin/detail_peserta.dart';
+part 'admin/add_berita.dart';

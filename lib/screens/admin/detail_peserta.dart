@@ -36,26 +36,13 @@ class _DetailPesertaState extends State<DetailPeserta> {
             return SafeArea(
               child: VStack(
                 [
-                  VxBox(
-                          child: HStack(
-                    [
-                      IconButton(
-                          icon: Icon(Icons.arrow_back_ios),
-                          onPressed: () {
-                            Get.back();
-                          }),
-                      'Detail Peserta'
-                          .text
-                          .textStyle(boldText)
-                          .maxLines(1)
-                          .makeCentered(),
-                    ],
-                    axisSize: MainAxisSize.max,
-                  ))
-                      .py12
-                      .size(context.screenWidth, context.percentHeight * 12)
-                      .color(Warna.white)
-                      .make(),
+                  BackButtonWidget(
+                    iconData: Icons.arrow_back_ios_outlined,
+                    title: 'Detail Peserta',
+                    onPressed: () {
+                      Get.back();
+                    },
+                  ),
                   nama.text.textStyle(boldText.copyWith(fontSize: 24)).make(),
                   16.heightBox,
                   nim.text
@@ -82,7 +69,10 @@ class _DetailPesertaState extends State<DetailPeserta> {
                     [
                       'Total Izin : '.text.textStyle(primaryText).make(),
                       VxBox(
-                        child: snapshot.data.izin.toStringAsFixed(0).text.white
+                        child: snapshot.data.izin
+                            .toStringAsFixed(0)
+                            .text
+                            .white
                             .textStyle(boldText.copyWith(fontSize: 32))
                             .make(),
                       ).p32.color(Warna.green).roundedFull.makeCentered()
@@ -94,7 +84,10 @@ class _DetailPesertaState extends State<DetailPeserta> {
                     [
                       'Tidak Hadir : '.text.textStyle(primaryText).make(),
                       VxBox(
-                        child: snapshot.data.bolos.toStringAsFixed(0).text.white
+                        child: snapshot.data.bolos
+                            .toStringAsFixed(0)
+                            .text
+                            .white
                             .textStyle(boldText.copyWith(fontSize: 32))
                             .make(),
                       ).p32.color(Warna.red).roundedFull.makeCentered()
