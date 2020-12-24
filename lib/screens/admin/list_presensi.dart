@@ -15,9 +15,9 @@ class _ListPresensiState extends State<ListPresensi> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () {
+      onWillPop: () async {
         Get.back();
-        return;
+        return false;
       },
       child: Scaffold(
           backgroundColor: Warna.white,

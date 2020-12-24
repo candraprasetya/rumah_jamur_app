@@ -145,7 +145,8 @@ class _AddBeritaScreenState extends State<AddBeritaScreen> {
                       imageUrl: imageUrl,
                       content: contentController.text,
                       uid: userModel.uid,
-                      nama: userModel.nama))
+                      nama: userModel.nama,
+                      date: DateTime.now()))
                   .then((value) {
                 Get.back();
                 Get.offAllNamed(

@@ -18,7 +18,9 @@ class _ListPesertaState extends State<ListPeserta> {
       body: VStack([
         BackButtonWidget(
           iconData: Icons.arrow_back_ios_outlined,
-          onPressed: () {},
+          onPressed: () {
+            Get.back();
+          },
           title: 'List Peserta',
         ),
         Expanded(

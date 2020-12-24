@@ -27,10 +27,10 @@ class MyIconButton extends StatelessWidget {
                 alignment: MainAxisAlignment.center,
                 crossAlignment: CrossAxisAlignment.center))
         .p32
-        .roundedLg
+        .rounded
         .color(Warna.lynxWhite)
         .make()
-        .wFull(context)
+        .p12()
         .onTap(onPressed);
   }
 }

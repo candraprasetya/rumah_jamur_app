@@ -43,6 +43,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 UserModel(
                     nama: nama,
                     nim: nim.toUpperCase(),
+                    role: '',
+                    email: '',
+                    noTelephone: '',
+                    uid: '',
                     photoUrl:
                         "https://sia.unram.ac.id/index.php/foto/mahasiswa/" +
                             nim.toUpperCase() +

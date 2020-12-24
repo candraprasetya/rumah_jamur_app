@@ -32,7 +32,9 @@ class AuthServices {
       return Result(userModel: userCredential.user);
     } on FirebaseAuthException catch (e) {
       print(e.toString());
-      return Result(message: e.toString().split('/')[1].split(']')[1].trim());
+      return Result(
+          message: e.toString().split('/')[1].split(']')[1].trim(),
+          userModel: null);
     }
   }
 

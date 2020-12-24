@@ -14,7 +14,7 @@ class PresensiModel {
         code: code ?? this.code,
         start: start ?? this.start,
         end: end ?? this.end,
-        uid: uid ?? this.uid,
-        qrUrl: qrUrl ?? this.qrUrl);
+        uid: uid,
+        qrUrl: qrUrl);
   }
 }

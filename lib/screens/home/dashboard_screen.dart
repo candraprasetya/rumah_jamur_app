@@ -118,19 +118,26 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                     color: Warna.darkBrown.withOpacity(.7)))
                             .objectCenterRight(),
                         10.heightBox,
-                        Text(
-                          document.data()['judul'],
-                          style: boldText.copyWith(
-                            fontSize: 18,
-                          ),
-                        ),
+                        Container(
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            child: VStack([
+                              Text(
+                                document.data()['judul'],
+                                maxLines: 3,
+                                overflow: TextOverflow.clip,
+                                style: boldText.copyWith(
+                                  fontSize: 14,
+                                ),
+                              ),
+                              12.heightBox,
+                              Text(document.data()['content'],
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                  style: primaryText.copyWith(
+                                      fontSize: 10,
+                                      color: Warna.darkBrown.withOpacity(.7))),
+                            ])),
                         4.heightBox,
-                        Text(document.data()['content'],
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
-                            style: primaryText.copyWith(
-                                fontSize: 14,
-                                color: Warna.darkBrown.withOpacity(.7))),
                       ], axisSize: MainAxisSize.max),
                       10.heightBox,
                     ]))
@@ -141,10 +148,13 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         .wFull(context)
                         .pSymmetric(v: 8, h: 16)
                         .onTap(() async {
-                      Get.toNamed('/detail', arguments: [
+                      Get.toNamed('/detailberita', arguments: [
+                        document.data()['imageUrl'],
+                        document.data()['date'],
+                        document.data()['judul'],
+                        document.data()['content'],
                         document.data()['nama'],
-                        document.data()['nim'],
-                        document.data()['uid']
+                        document.data()['uid'],
                       ]);
                     });
                   }).toList(),

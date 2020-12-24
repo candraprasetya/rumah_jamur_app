@@ -124,21 +124,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ], alignment: MainAxisAlignment.spaceBetween);
               }),
           (widget.user.role == "panitia")
-              ? MyIconButton(
-                  icon: Icons.calendar_today_rounded,
-                  onPressed: () {
-                    Get.toNamed('/jadwal');
-                  },
-                  text: 'Jadwal',
-                )
-              : 40.heightBox,
-          (widget.user.role == "panitia")
-              ? MyIconButton(
-                  icon: Icons.book_online_outlined,
-                  onPressed: () {
-                    Get.toNamed('/addberita', arguments: widget.user);
-                  },
-                  text: 'Berita',
+              ? HStack(
+                  [
+                    Expanded(
+                      flex: 1,
+                      child: MyIconButton(
+                        icon: Icons.calendar_today_rounded,
+                        onPressed: () {
+                          Get.toNamed('/jadwal');
+                        },
+                        text: 'Jadwal',
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: MyIconButton(
+                        icon: Icons.book_online_outlined,
+                        onPressed: () {
+                          Get.toNamed('/addberita', arguments: widget.user);
+                        },
+                        text: 'Berita',
+                      ),
+                    )
+                  ],
+                  alignment: MainAxisAlignment.spaceBetween,
+                  axisSize: MainAxisSize.max,
                 )
               : 40.heightBox,
           16.heightBox,

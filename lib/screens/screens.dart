@@ -30,6 +30,7 @@ part 'firstrun/login_screen.dart';
 part 'home/home_screen.dart';
 part 'home/profile_screen.dart';
 part 'home/berita_screen.dart';
+part 'home/detail_berita.dart';
 part 'home/code_presensi.dart';
 part 'home/dashboard_screen.dart';
 
