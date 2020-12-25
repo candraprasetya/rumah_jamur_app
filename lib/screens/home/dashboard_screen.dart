@@ -10,7 +10,6 @@ class DashBoardScreen extends StatefulWidget {
 }
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
-  CollectionReference berita = FirebaseFirestore.instance.collection('berita');
   int touchedIndex;
 
   Widget _title() {
@@ -65,7 +64,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           ]).p16(),
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
-              stream: berita.snapshots(),
+              stream: BeritaService.beritaCollection.snapshots(),
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasError) {

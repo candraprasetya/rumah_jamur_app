@@ -7,8 +7,6 @@ class ListPresensi extends StatefulWidget {
 
 class _ListPresensiState extends State<ListPresensi> {
   Uint8List bytes = Uint8List(0);
-  CollectionReference presensis =
-      FirebaseFirestore.instance.collection('presensi');
 
   String uid = Get.arguments;
 
@@ -32,7 +30,7 @@ class _ListPresensiState extends State<ListPresensi> {
               ),
               Expanded(
                 child: StreamBuilder<QuerySnapshot>(
-                  stream: presensis.snapshots(),
+                  stream: PresensiService.presensiCollection.snapshots(),
                   builder: (BuildContext context,
                       AsyncSnapshot<QuerySnapshot> snapshot) {
                     if (snapshot.hasError) {

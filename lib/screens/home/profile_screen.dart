@@ -176,7 +176,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: MyIconButton(
                         icon: Icons.book_online_outlined,
                         onPressed: () {
-                          Get.toNamed('/addberita', arguments: widget.user);
+                          Get.toNamed('/listberita', arguments: widget.user);
                         },
                         text: 'Berita',
                       ),
