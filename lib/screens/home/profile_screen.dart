@@ -64,13 +64,48 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
         backgroundColor: Warna.white,
         body: VStack([
-          20.heightBox,
-          widget.user.nama.text.textStyle(boldText).xl2.make(),
-          20.heightBox,
-          "Email : ${widget.user.email}".text.textStyle(primaryText).xs.make(),
-          10.heightBox,
-          "Nim : ${widget.user.nim}".text.textStyle(primaryText).xs.make(),
-          28.heightBox,
+          HStack(
+            [
+              VStack([
+                20.heightBox,
+                widget.user.nama.text.textStyle(boldText).xl2.make(),
+                20.heightBox,
+                "Email : ${widget.user.email}"
+                    .text
+                    .textStyle(primaryText)
+                    .xs
+                    .make(),
+                10.heightBox,
+                "Nim : ${widget.user.nim}"
+                    .text
+                    .textStyle(primaryText)
+                    .xs
+                    .make(),
+                28.heightBox,
+              ]),
+              IconButton(
+                icon: Icon(Icons.logout),
+                color: Warna.red,
+                onPressed: () {
+                  SomeDialog(
+                      appName: "RumahJamur",
+                      context: context,
+                      path: 'assets/animations/sad.json',
+                      title: 'Logout',
+                      content:
+                          'Keluarkan akun ${widget.user.email} dari aplikasi RumahJamur?',
+                      submit: () async {
+                        box.remove('UID');
+                        await AuthServices.signOut();
+                        Get.offAllNamed('/welcome');
+                      },
+                      mode: SomeMode.Lottie);
+                },
+              )
+            ],
+            axisSize: MainAxisSize.max,
+            alignment: MainAxisAlignment.spaceBetween,
+          ),
           FutureBuilder<KehadiranModel>(
               future: PresensiService.getCount(widget.user.uid),
               builder: (context, snapshot) {
@@ -103,7 +138,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Indicator(
                         color: Warna.red,
                         size: 12,
-                        text: 'Tidak Hadir',
+                        text: 'Pertemuan',
                         textColor: Warna.darkBrown,
                         isSquare: false,
                       )
@@ -152,15 +187,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 )
               : 40.heightBox,
           16.heightBox,
-          MyButton(
-            color: Warna.red,
-            text: 'Keluar',
-            onPress: () {
-              box.remove('UID');
-              AuthServices.signOut();
-              Get.offAllNamed('/welcome');
-            },
-          ),
           16.heightBox,
         ]).p16().scrollVertical());
   }

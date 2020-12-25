@@ -42,7 +42,7 @@ class AuthServices {
     await auth.sendPasswordResetEmail(email: email);
   }
 
-  static void signOut() async {
+  static Future<void> signOut() async {
     await auth.signOut();
   }
 
