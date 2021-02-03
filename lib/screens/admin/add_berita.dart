@@ -34,7 +34,7 @@ class _AddBeritaScreenState extends State<AddBeritaScreen> {
         VxBox(
                 child: (isEdit)
                     ? CircularProgressIndicator()
-                    : (imageUrl.isNullOrBlank)
+                    : (imageUrl.isBlank)
                         ? Icon(
                             Icons.edit,
                             size: 16,
@@ -81,7 +81,7 @@ class _AddBeritaScreenState extends State<AddBeritaScreen> {
                 isEdit = false;
                 imageUrl = value;
               });
-              if (value.isNullOrBlank) {
+              if (value.isBlank) {
                 Get.snackbar("Error",
                     "Gagal mengunggah gambar, periksa koneksi internet kamu");
               }
@@ -136,9 +136,9 @@ class _AddBeritaScreenState extends State<AddBeritaScreen> {
                 barrierDismissible: false,
                 transitionCurve: Curves.easeOutQuint);
 
-            if (!judulController.text.isNullOrBlank ||
-                !contentController.text.isNullOrBlank ||
-                imageUrl.isNullOrBlank) {
+            if (!judulController.text.isBlank ||
+                !contentController.text.isBlank ||
+                imageUrl.isBlank) {
               await BeritaService.newBerita(BeritaModel(
                       code: code,
                       judul: judulController.text,
