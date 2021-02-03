@@ -16,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
       onPress: () async {
         String email = emailController.text.trim();
         String password = passController.text.trim();
-        if (email.isNullOrBlank || password.isNullOrBlank) {
+        if (email.isBlank || password.isBlank) {
           Get.snackbar('Error', "Silahkan isi email dan password kamu");
         } else {
           Get.dialog(
